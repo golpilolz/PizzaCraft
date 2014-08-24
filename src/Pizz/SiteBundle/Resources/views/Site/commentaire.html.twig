@@ -1,0 +1,15 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/commentaire.html.twig #}
+
+{# On utilise une variable temporaire, qu'on définit à false si elle n'est pas déjà définie #}
+{% set accueil = accueil|default(false) %}
+
+<h2>
+    {# Si on est sur la page d'accueil, on fait un lien vers l'article, sinon non #}
+    {{ coms.titre }}
+</h2>
+
+<i>Le {{ coms.date|date('d/m/Y') }}</i>
+
+<div class="well">
+    {{ coms.contenu }}
+</div>

@@ -1,0 +1,80 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/index.html.twig #}
+
+{% extends "PizzSiteBundle::layout.html.twig" %}
+
+{% block title %}
+    Ajouter - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+
+    <a href="#myModal" role="button" class="btn" data-toggle="modal">Ajouter une pizza</a>
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form method="post" {{ form_enctype(form) }}>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Ajouter une pizza</h3>
+        </div>
+        <div class="modal-body">
+                <div>
+                    {# Génération du label. #}
+                    {{ form_label(form.nom, "Nom") }}
+                    {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.nom) }}
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.nom) }}
+                </div>
+                <div>
+                    {{ form_label(form.ingredients, "Ingrédients") }}
+                    {{ form_errors(form.ingredients) }}
+                    {{ form_widget(form.ingredients) }}
+                </div>
+                <div>
+                    {{ form_label(form.ppetit, "Prix Petite") }}
+                    {{ form_errors(form.ppetit) }}
+                    {{ form_widget(form.ppetit) }}
+                </div>
+                <div>
+                    {{ form_label(form.pnormale, "Prix Normale") }}
+                    {{ form_errors(form.pnormale) }}
+                    {{ form_widget(form.pnormale) }}
+                </div>
+                {{ form_rest(form) }}
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-primary" />
+        </div>
+        </form>
+    </div>
+    <hr>
+    <div class="well">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nom et ingrédients</th>
+                    <th>Prix</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pizz in pizza %}
+                <tr>
+                    <td><img class="visible-desktop" width="25%"
+                             src="{{ asset(pizz.image.webPath) }}"
+                             alt="{{ pizz.image.alt }}"
+                                /></td>
+                    <td>
+                        {{ pizz.nom }}<br/>
+                        <p class="muted">{{ pizz.ingredients }}</p>
+                    </td>
+                    <td>{{ pizz.pnormale }}€</td>
+                    <td><a href="{{ path('admin_pdel', {'id': pizz.id}) }}" class="btn btn-danger"><i class="icon-trash"></i> Supprimer</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

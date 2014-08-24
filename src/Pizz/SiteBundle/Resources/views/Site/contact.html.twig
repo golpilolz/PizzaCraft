@@ -1,0 +1,14 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/index.html.twig #}
+
+{% extends "PizzSiteBundle::layout.html.twig" %}
+
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    <form method="post" {{ form_enctype(form) }}>
+        {{ form_rest(form) }}
+        <input type="submit" class="btn btn-primary" />
+    </form>
+{% endblock %}

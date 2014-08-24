@@ -1,0 +1,49 @@
+{# src/Pizz/ClientBundle/Resources/views/Site/index.html.twig #}
+
+{% extends "PizzClientBundle::layout.html.twig" %}
+
+{% block title %}
+    Historique des Commandes - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    <div class="well">
+        <h4>Commandes en cours</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Detail</th>
+                    <th>Facture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="well">
+        <h4>Commandes précédentes</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Detail</th>
+                <th>Facture</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

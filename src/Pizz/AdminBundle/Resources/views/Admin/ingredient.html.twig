@@ -1,0 +1,75 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/ingredients.html.twig #}
+
+{% extends "PizzSiteBundle::layout.html.twig" %}
+
+{% block title %}
+    Ajouter un ingrédient - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    <a href="#myModal" role="button" class="btn" data-toggle="modal">Ajouter un ingrédient</a>
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form method="post" {{ form_enctype(form) }}>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Ajouter un ingrédient</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                {# Génération du label. #}
+                {{ form_label(form.type, "Type") }}
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.type) }}
+                {# Génération de l'input. #}
+                {{ form_widget(form.type) }}
+            </div>
+            <div>
+                {{ form_label(form.designation, "Designation") }}
+                {{ form_errors(form.designation) }}
+                {{ form_widget(form.designation) }}
+            </div>
+            <div>
+                {{ form_label(form.prix, "Prix") }}
+                {{ form_errors(form.prix) }}
+                {{ form_widget(form.prix) }}
+            </div>
+            {{ form_rest(form) }}
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-primary" />
+        </div>
+        </form>
+    </div>
+    <hr>
+    <div class="well">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Type</th>
+                    <th>Prix / Pizza</th>
+                    <th>Stock (pour X Pizza(s))</th>
+                    <th>Ajouter</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for ingredient in ingredients %}
+                <tr>
+                    <td>{{ ingredient.Designation }}</td>
+                    <td>
+                        {% for type in ingredient.type %}
+                            {{ type.nom }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ ingredient.prix }}€</td>
+                    <td>0</td>
+                    <td><a href="{{ path('admin_imodif', {'id': ingredient.id}) }}" class="btn btn-primary"><i class="icon-edit"></i> Modifier</a></td>
+                    <td><a href="{{ path('admin_idel', {'id': ingredient.id}) }}" class="btn btn-danger"><i class="icon-trash"></i> Supprimer</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

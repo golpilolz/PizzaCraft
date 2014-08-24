@@ -1,0 +1,37 @@
+site_accueil:
+    path:      /
+    defaults:  { _controller: PizzSiteBundle:Site:index}
+
+site_pizza:
+    path:      /pizza
+    defaults:  { _controller: PizzSiteBundle:Site:pizza}
+
+site_craft:
+    path:      /pizzacraft
+    defaults:  { _controller: PizzSiteBundle:Site:crafter}
+
+site_panier:
+    path:      /panier
+    defaults:  { _controller: PizzSiteBundle:Site:panier}
+
+site_ajouter:
+    path:      /ajouter/{id}
+    defaults:  { _controller: PizzSiteBundle:Site:ajouter}
+
+site_supprimer:
+    path:      /supprimer/{id}
+    defaults:  { _controller: PizzSiteBundle:Site:supprimer}
+
+site_commander:
+    path:      /commander
+    defaults:  { _controller: PizzSiteBundle:Site:commander}
+
+site_livre:
+    path:      /livredor/{page}
+    defaults:  { _controller: PizzSiteBundle:Site:livre, page: 1}
+    requirements:
+            page:  \d*
+
+site_contact:
+    path:      /contact
+    defaults:  { _controller: PizzSiteBundle:Site:contact}

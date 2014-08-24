@@ -1,0 +1,134 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}PizzaCraft{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" type="text/css" />
+        {% endblock %}
+        {% block head %}
+
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="container">
+            <div id="header" class="hero-unit">
+                <img src="{{ asset('img/logo.png') }}" class="img-responsive">
+            </div>
+            <div class="navbar navbar-inverse">
+                <div class="navbar-inner">
+                    <div class="container">
+
+                        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+
+                        <a class="brand" href="{{ path('site_accueil') }}">Pizzacraft</a>
+
+                        <!-- Everything you want hidden at 940px or less, place within here -->
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li class="divider-vertical"></li>
+                                <li><a href="{{ path('site_accueil') }}">Accueil</a></li>
+                                <li class="divider-vertical"></li>
+                                <li><a href="{{ path('site_pizza') }}">Nos Pizzas</a></li>
+                                <li class="divider-vertical"></li>
+                                <li><a href="{{ path('site_craft') }}">PizzaCrafter</a></li>
+                                <li class="divider-vertical"></li>
+                                <li><a href="{{ path('site_livre') }}">Livre d'or</a></li>
+                                <li class="divider-vertical"></li>
+                                <li><a href="{{ path('site_contact') }}">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="content" class="span12">
+                    {% for flashMessage in app.session.flashbag.get('info') %}
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+            <hr>
+            <footer>
+                <p>Pizzacraft.fr all rights reserved</p>
+                <p>JAMInfo - 2014</p>
+            </footer>
+        </div>
+
+        {% block userbar %}
+            <div class="navbar navbar-fixed-bottom">
+                <div class="navbar-inner">
+                    <div class="container">
+
+                        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+
+                        <!-- Be sure to leave the brand out there if you want it shown -->
+                        <a class="brand" href="{{ path('site_panier') }}"><img src="{{ asset('img/caddie.png') }}"><span class="badge badge-info">{{ app.session.get('panier') }}</span></a>
+
+                        <!-- Everything you want hidden at 940px or less, place within here -->
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li class="divider-vertical"></li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li><a href="{{ path('fos_user_profile_show') }}">Bonjour {{ app.user.username }}</a></li>
+                                    <li class="divider-vertical"></li>
+                                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                                    <li class="divider-vertical"></li>
+                                {% else %}
+                                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                                {% endif %}
+                                {% if is_granted("ROLE_USER") %}
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Compte Client</a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                            <li><a href="{{ path('client_index') }}">Accueil Client</a></li>
+                                            <li><a href="{{ path('client_commande') }}">Historique des commandes</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <li class="divider-vertical"></li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administration</a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                            <li><a href="{{ path('admin_accueil') }}">Accueil</a></li>
+                                            <li><a href="{{ path('admin_pizza') }}">Pizzas</a></li>
+                                            <li><a href="{{ path('admin_ingredient') }}">Ingrédients</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block javascripts %}
+            {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+            <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+        {% endblock %}
+    <div class="visible-desktop"><br/><br/></div>
+    </body>
+</html>

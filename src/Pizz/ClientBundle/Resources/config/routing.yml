@@ -1,0 +1,11 @@
+client_index:
+    pattern:  /
+    defaults: { _controller: PizzClientBundle:Client:index }
+
+client_commande:
+    pattern:  /historique
+    defaults: { _controller: PizzClientBundle:Client:historique }
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile

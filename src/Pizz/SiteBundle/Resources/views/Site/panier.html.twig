@@ -1,0 +1,68 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/panier.html.twig #}
+
+{% extends "PizzSiteBundle::layout.html.twig" %}
+
+{% block title %}
+    Panier - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    {% set total = 0 %}
+
+    <h2>Votre panier</h2>
+
+    {% if app.session.get('panier') > 1 %}
+        <h4>Vous avez {{ app.session.get('panier') }} articles</h4>
+    {% elseif app.session.get('panier') == 1 %}
+        <h4>Vous avez {{ app.session.get('panier') }} article</h4>
+    {% else %}
+        <h4>Vous n'avez pas article</h4>
+    {% endif %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cmd in commande %}
+                {% if cmd.0 == "Pizza Craftee" %}
+                    {% set total = total+cmd.1 %}
+                    <tr>
+                        <td>
+                            Pizza Craftée<br/>
+                            <p class="muted">{{ cmd.2 }}</p>
+                        </td>
+                        <td>{{ cmd.1 }}€</td>
+                        <td><form action="{{ path('site_supprimer', { 'id': loop.index-1 }) }}" method="post"><input class="btn btn-danger" type="submit" value="Supprimer"></form></td>
+                    </tr>
+                {% else %}
+                {% for pizz in pizza %}
+                    {% if(pizz.id == cmd.1) %}
+                        {% set total = total+pizz.pnormale %}
+                        <tr>
+                            <td>
+                                {{ pizz.nom }}<br/>
+                                <p class="muted">{{ pizz.ingredients }}</p>
+                            </td>
+                            <td>{{ pizz.pnormale }}€</td>
+                            <td><form action="{{ path('site_supprimer', { 'id': loop.index-1 }) }}" method="post"><input class="btn btn-danger" type="submit" value="Supprimer"></form></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <h4>Total : {{ total }}€</h4>
+
+    <form action="" method="post">
+        {% if total == 0 %}
+            <input class="btn btn-large btn-primary disabled" type="submit" value="Commander">
+        {% else %}
+            <input class="btn btn-large btn-primary" type="submit" value="Commander">
+        {% endif %}
+    </form>
+{% endblock %}

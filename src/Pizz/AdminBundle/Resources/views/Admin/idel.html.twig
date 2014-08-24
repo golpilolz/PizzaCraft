@@ -1,0 +1,19 @@
+{# src/Pizz/AdminBundle/Resources/views/Admin/idel.html.twig #}
+
+{% extends "PizzAdminBundle::layout.html.twig" %}
+{% block title %}
+    Supprimer un ingrédient - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    <h2>Supprimer un ingrédient</h2>
+    <p>
+        Etes-vous certain de vouloir supprimer les "{{ ingredient.Designation }}" de la carte?
+    </p>
+    {# On met l'id de l'article dans la route de l'action du formulaire #}
+    <form action="{{ path('admin_idel', {'id': ingredient.id}) }}" method="post" >
+        <a href="{{ path('admin_ingredient') }}" class="btn">Retour aux ingredients</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {{ form_rest(form) }}
+    </form>
+{% endblock %}

@@ -1,0 +1,105 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/panier.html.twig #}
+
+{% extends "PizzSiteBundle::layout.html.twig" %}
+
+{% block title %}
+    Panier - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    {% set total = 0 %}
+
+    <h2>Résumé de votre Commande</h2>
+    <div class="well">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Prix</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cmd in commande %}
+                {% if cmd.0 == "Pizza Craftee" %}
+                    {% set total = total+cmd.1 %}
+                    <tr>
+                        <td>
+                            Pizza Craftée<br/>
+                            <p class="muted">{{ cmd.2 }}</p>
+                        </td>
+                        <td>{{ cmd.1 }}€</td>
+                    </tr>
+                {% else %}
+                    {% for pizz in pizza %}
+                        {% if(pizz.id == cmd.1) %}
+                            {% set total = total+pizz.pnormale %}
+                            <tr>
+                                <td>
+                                    {{ pizz.nom }}<br/>
+                                    <p class="muted">{{ pizz.ingredients }}</p>
+                                </td>
+                                <td>{{ pizz.pnormale }}€</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td><h4>Total : {{ total }}€</h4></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <form method="post" {{ form_enctype(form) }}>
+        <div class="well">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <fieldset>
+                    <legend>Informations sur la commande</legend>
+                    <div>
+                        {# Génération du label. #}
+                        {{ form_label(form.nom, "Proprietaire de la carte bleue") }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.nom) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.nom) }}
+                    </div>
+                    <div>
+                        {# Génération du label. #}
+                        {{ form_label(form.numero, "Numero de la carte Bleue") }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.numero) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.numero) }}
+                    </div>
+                    <div>
+                        {# Génération du label. #}
+                        {{ form_label(form.date, "Date d'expiration") }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.date) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.date) }}
+                    </div>
+                    <div>
+                        {# Génération du label. #}
+                        {{ form_label(form.verification, "Code de vérification") }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.verification) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.verification) }}
+                    </div>
+                    {{ form_rest(form) }}
+                </fieldset>
+        </div>
+        <hr>
+        <input class="btn btn-primary" type="submit" value="Commander">
+        {% else %}
+            <h4>Veuiller vous connecter pour honorer votre commande</h4>
+            <hr>
+            <a href="{{ path('fos_user_registration_register') }}" class="btn">S'enregistrer</a> <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary">Connexion</a>
+            </div>
+        {% endif %}
+
+    </form>
+{% endblock %}

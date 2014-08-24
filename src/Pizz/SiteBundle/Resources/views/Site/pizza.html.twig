@@ -1,0 +1,26 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/pizza.html.twig #}
+
+{% extends "PizzSiteBundle::layout.html.twig" %}
+
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Nom et ingrédients</th>
+            <th>Prix</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for pizz in pizza %}
+        {# On inclut la vue à chaque itération dans la boucle #}
+        {% include "PizzSiteBundle:Site:pizz.html.twig"%}
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

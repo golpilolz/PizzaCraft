@@ -1,0 +1,19 @@
+{# src/Pizz/AdminBundle/Resources/views/Admin/pdel.html.twig #}
+
+{% extends "PizzAdminBundle::layout.html.twig" %}
+{% block title %}
+    Supprimer une pizza - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    <h2>Supprimer une pizza</h2>
+    <p>
+        Etes-vous certain de vouloir supprimer la "{{ pizza.nom }}" ?
+    </p>
+    {# On met l'id de l'article dans la route de l'action du formulaire #}
+    <form action="{{ path('admin_pdel', {'id': pizza.id}) }}" method="post" >
+        <a href="{{ path('admin_pizza') }}" class="btn">Retour aux pizzas</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {{ form_rest(form) }}
+    </form>
+{% endblock %}

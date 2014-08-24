@@ -1,0 +1,44 @@
+{% set total = 0 %}
+
+<h2>Votre Facture</h2>
+<div class="well">
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Prix</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cmd in commande %}
+            {% if cmd.0 == "Pizza Craftee" %}
+                {% set total = total+cmd.1 %}
+                <tr>
+                    <td>
+                        Pizza Craftée<br/>
+                        <p class="muted">{{ cmd.2 }}</p>
+                    </td>
+                    <td>{{ cmd.1 }}€</td>
+                </tr>
+            {% else %}
+                {% for pizz in pizza %}
+                    {% if(pizz.id == cmd.1) %}
+                        {% set total = total+pizz.pnormale %}
+                        <tr>
+                            <td>
+                                {{ pizz.nom }}<br/>
+                                <p class="muted">{{ pizz.ingredients }}</p>
+                            </td>
+                            <td>{{ pizz.pnormale }}€</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td><h4>Total : {{ total }}€</h4></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

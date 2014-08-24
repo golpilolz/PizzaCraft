@@ -1,0 +1,184 @@
+# Webalizer V2.23-05 Incremental Data - 08/08/2014 21:51:17
+2014 8 8 21 51 17
+67 63 4 14 9 3 1206499 34 5 0 0 0
+2 9 23 6 8
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+19 16 294247 1 11 2 0 0
+30 29 319762 1 21 1 0 0
+18 18 592490 2 2 2 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+9 9 296245 1 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+24 22 586923 8 0 0
+14 14 301869 6 0 0
+20 18 21462 19 0 0
+0
+0
+0
+63
+0
+0
+0
+0
+0
+0
+0
+2
+2
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+# -urls- 
+/img/logo.png
+1 4 0 293040 0 0 0 0
+/js/bootstrap.js
+0 4 0 45152 0 0 0 0
+/js/jquery.js
+0 4 0 117336 0 0 0 0
+/livredor
+0 1 0 1484 0 0 0 0
+/register/
+0 2 0 2462 0 0 0 0
+/favicon.ico
+0 2 0 4476 0 0 0 0
+/img/caddie.png
+1 4 0 5688 0 0 0 0
+/login
+0 4 0 4552 0 1 0 0
+/css/bootstrap.css
+0 4 0 73428 0 0 0 0
+/pizzacraft
+0 1 0 1376 0 0 0 0
+/
+0 22 0 23364 5 0 0 0
+/css/bootstrap-responsive.css
+0 4 0 16956 0 0 0 0
+/img/glyphicons-halflings.png
+1 3 0 38397 0 0 0 0
+/img/home.jpg
+1 4 0 577936 0 0 0 0
+# End Of Table - urls
+# -sites- (monthly)
+92.161.193.214
+0 30 29 319762 1 1407453117 0 0
+/
+90.26.183.202
+0 9 9 296245 1 1407534676 0 0
+/
+80.12.35.84
+0 9 9 296245 1 1407505892 0 0
+/
+92.161.85.56
+0 19 16 294247 2 1407367594 0 0
+/
+# End Of Table - sites (monthly)
+# -sites- (daily)
+90.26.183.202
+0 9 9 296245 1 1407534676 0 0
+/
+80.12.35.84
+0 9 9 296245 1 1407505892 0 0
+/
+# End Of Table - sites (daily)
+# -referrers- 
+http://pizza.golpilolz.com/css/bootstrap.css
+1 1
+http://pizza.golpilolz.com/login
+1 5
+http://arthurhaton.fr/programmation
+0 1
+- (Direct Request)
+0 8
+http://pizza.golpilolz.com/livredor
+1 1
+http://www.arthurhaton.fr/programmation
+0 3
+http://pizza.golpilolz.com/register/
+1 2
+http://pizza.golpilolz.com/
+1 34
+http://127.0.0.1/golpilolz/web/app_dev.php/programmation
+0 12
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4
+0 9
+Mozilla/5.0 (Windows NT 6.3; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0
+0 49
+Mozilla/5.0 (Linux; U; Android 4.1.2; fr-fr; LT26i Build/6.2.B.1.96) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobil
+0 9
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames

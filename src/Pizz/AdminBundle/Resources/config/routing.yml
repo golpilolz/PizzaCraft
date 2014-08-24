@@ -1,0 +1,33 @@
+admin_accueil:
+    path:      /
+    defaults:  { _controller: PizzAdminBundle:Admin:index}
+
+admin_pizza:
+    path:      /pizza
+    defaults:  { _controller: PizzAdminBundle:Admin:pizza}
+
+admin_pdel:
+    path:      /pizza/supprimer/{id}
+    defaults:  { _controller: PizzAdminBundle:Admin:pdel}
+    requirements:
+        id:  \d+
+
+admin_ingredient:
+    path:      /ingredient
+    defaults:  { _controller: PizzAdminBundle:Admin:ingredient}
+
+admin_idel:
+    path:      /ingredient/supprimer/{id}
+    defaults:  { _controller: PizzAdminBundle:Admin:idel}
+    requirements:
+        id:  \d+
+
+admin_imodif:
+    path:      /ingredient/modifier/{id}
+    defaults:  { _controller: PizzAdminBundle:Admin:imodif}
+    requirements:
+        id:  \d+
+
+admin_itineraire:
+    path:      /itineraire
+    defaults:  { _controller: PizzAdminBundle:Admin:itineraire}

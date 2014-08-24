@@ -1,0 +1,14 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/pizz.html.twig #}
+
+<tr>
+    <td><img class="visible-desktop" width="25%"
+                src="{{ asset(pizz.image.webPath) }}"
+                alt="{{ pizz.image.alt }}"
+                /></td>
+    <td>
+        {{ pizz.nom }}<br/>
+        <p class="muted">{{ pizz.ingredients }}</p>
+    </td>
+    <td>{{ pizz.pnormale }}€</td>
+    <td><form action="{{ path('site_ajouter', { 'id': pizz.id }) }}" method="post"><input class="btn btn-primary" type="submit" value="Ajouter au panier"></form></td>
+</tr>

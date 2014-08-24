@@ -1,0 +1,7 @@
+parameters:
+#    pizz_site.example.class: Pizz\SiteBundle\Example
+
+services:
+#    pizz_site.example:
+#        class: %pizz_site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

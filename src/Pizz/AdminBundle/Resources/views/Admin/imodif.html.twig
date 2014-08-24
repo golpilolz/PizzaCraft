@@ -1,0 +1,60 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/ingredients.html.twig #}
+
+{% extends "PizzSiteBundle::layout.html.twig" %}
+
+{% block title %}
+    Ajouter un ingrédient - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    <div class="well">
+        <form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Prix / Pizza</th>
+                <th>Stock (pour X Pizza(s))</th>
+                <th>Enregistrer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ingredient in ingredients %}
+                <form method="post" {{ form_enctype(form) }}>
+                    {% if ing.id == ingredient.id %}
+                        {{ form_errors(form) }}
+                        <tr>
+                            <td>
+                                {{ form_widget(form.designation) }}
+                            </td>
+                            <td>
+                                {{ form_widget(form.type) }}
+                            </td>
+                            <td>
+                                {{ form_widget(form.prix) }} €
+                            </td>
+                            <td>0</td>
+                            {{ form_rest(form) }}
+                            <td><input type="submit" class="btn btn-primary" value="Modifier" /></td>
+                        </tr>
+                    </form>
+                {% else %}
+                    <tr>
+                        <td>{{ ingredient.Designation }}</td>
+                        <td>
+                            {% for type in ingredient.type %}
+                                {{ type.nom }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ ingredient.prix }}€</td>
+                        <td>0</td>
+                        <td></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        </form>
+    </div>
+{% endblock %}

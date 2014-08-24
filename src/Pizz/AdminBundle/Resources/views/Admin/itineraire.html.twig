@@ -1,0 +1,16 @@
+{# src/Pizz/SiteBundle/Resources/views/Site/index.html.twig #}
+
+{% extends "PizzAdminBundle::layout.html.twig" %}
+
+{% block title %}
+    Itineraire - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+    {{ google_map_container(maps) }}
+    {{ google_map_js(maps) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
